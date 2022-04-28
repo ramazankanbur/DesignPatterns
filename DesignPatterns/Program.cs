@@ -12,7 +12,7 @@ namespace DesignPatterns
             // Bu pattern ile log metotlarını tüketecek client'lar logger detaylarından soyutlanırlar.
             // TxtLogger ve DbLoger sadece factory metod içinde kullanılabilir olur
             var txtLoger = LoggerFactory.GetInstance("txt");
-           Console.WriteLine(txtLoger.Log("hello!"));
+            Console.WriteLine(txtLoger.Log("hello!"));
             var dbLogger = LoggerFactory.GetInstance("db");
             Console.WriteLine( dbLogger.Log("hello!"));
             //------------------------------------
