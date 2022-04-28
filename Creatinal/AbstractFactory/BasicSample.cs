@@ -1,79 +1,115 @@
 ﻿namespace Creational.AbstractFactory
-{ 
+{
 
-    public interface ISuvCar
+    public interface IConnection
     {
-        string GetCarModel();
+        bool IsConnected { get; }
+        string Connect();
+        string Disconnect();
     }
 
-    public interface IClassicCar
+    public interface ICommand
     {
-        string GetCarModel();
+        string Execute(string query);
     }
 
-    public interface ICarFactory
+    class Db2Connection : IConnection
     {
-        ISuvCar SuvCarInstance();
-        IClassicCar ClassicCarInstance();
-    }
+        private bool _isConnected;
 
-    public class VW : ICarFactory
-    {
-        public IClassicCar ClassicCarInstance()
+        bool IConnection.IsConnected
         {
-            return new Polo();
+            get
+            {
+                return _isConnected;
+            }
         }
 
-        public ISuvCar SuvCarInstance()
+        public string Connect()
         {
-            return new Tiguan();
-        }
-    }
 
-    public class Mercedes : ICarFactory
-    {
-        public IClassicCar ClassicCarInstance()
-        {
-            return new C200();
+            _isConnected = true;
+            return "Db2 Connected";
         }
 
-        public ISuvCar SuvCarInstance()
+        public string Disconnect()
         {
-            return new G63();
+            _isConnected = false;
+            return "Db2 Disconnected";
         }
     }
 
-    public class C200 : IClassicCar
+    class SqlConnection : IConnection
     {
-        public string GetCarModel()
+        private bool _isConnected;
+
+        bool IConnection.IsConnected
         {
-            return "Mercedes marka C200 modeldir.";
+            get
+            {
+                return _isConnected;
+            }
+        }
+
+        public string Connect()
+        {
+
+            _isConnected = true;
+            return "Sql Connected";
+        }
+
+        public string Disconnect()
+        {
+            _isConnected = false;
+            return "Sql Disconnected";
         }
     }
 
-    public class Tiguan : ISuvCar
+    class DB2Command : ICommand
     {
-        public string GetCarModel()
+        public string Execute(string query)
         {
-            return "VW marka Tiguan modeldir.";
+            return $"Db2 command executed -> {query}";
         }
     }
 
-    public class Polo : IClassicCar
+    class SqlCommand : ICommand
     {
-        public string GetCarModel()
+        public string Execute(string query)
         {
-            return "VW marka Polo modeldir.";
+            return $"Sql command executed -> {query}";
         }
     }
 
-    public class G63 : ISuvCar
+   public interface IDatabaseFactory
     {
-        public string GetCarModel()
+        IConnection GetConnection();
+        ICommand GetCommand();
+    }
+
+    public class Db2Factory : IDatabaseFactory
+    {
+        ICommand IDatabaseFactory.GetCommand()
         {
-            return "Mercedes marka G63 modeldir.";
+            return new DB2Command();
+        }
+
+        IConnection IDatabaseFactory.GetConnection()
+        {
+            return new Db2Connection();
         }
     }
 
-    
+    public class SqlFactory : IDatabaseFactory
+    {
+        ICommand IDatabaseFactory.GetCommand()
+        {
+            return new SqlCommand();
+        }
+
+        IConnection IDatabaseFactory.GetConnection()
+        {
+            return new SqlConnection();
+        }
+    }
 }

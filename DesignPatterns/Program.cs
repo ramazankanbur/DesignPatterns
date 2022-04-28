@@ -14,24 +14,32 @@ namespace DesignPatterns
             var txtLoger = LoggerFactory.GetInstance("txt");
             Console.WriteLine(txtLoger.Log("hello!"));
             var dbLogger = LoggerFactory.GetInstance("db");
-            Console.WriteLine( dbLogger.Log("hello!"));
+            Console.WriteLine(dbLogger.Log("hello!"));
             //------------------------------------
 
 
+            // Abstract factory pattern
+            var factorySql = new DbFactory(new SqlFactory());
+            var connection = factorySql.GetConnectionInstance();
+            var command = factorySql.GetCommandInstance();
+            connection.Connect();
+            Console.WriteLine("Bağlantı durumu -> " + connection.IsConnected);
+            Console.WriteLine(command.Execute("select * ..."));
+            connection.Disconnect();
+            Console.WriteLine("Bağlantı durumu -> " + connection.IsConnected);
 
-            ICarFactory mercedes = new Mercedes();
-            CarClient mercedesClient = new(mercedes);
+            var factoryDb2 = new DbFactory(new Db2Factory());
+            var connectionDb2 = factoryDb2.GetConnectionInstance();
+            var commandDb2 = factoryDb2.GetCommandInstance();
+            connectionDb2.Connect();
+            Console.WriteLine("Bağlantı durumu -> " + connectionDb2.IsConnected);
+            Console.WriteLine(commandDb2.Execute("select * ..."));
+            connectionDb2.Disconnect();
+            Console.WriteLine("Bağlantı durumu -> " + connectionDb2.IsConnected);
+            //---------------------------------
 
-            Console.WriteLine("********* Mercedes **********");
-            Console.WriteLine(mercedesClient.GetClassicCarModel());
-            Console.WriteLine(mercedesClient.GetSuvCarModel());
 
-            ICarFactory vW = new VW();
-            CarClient vWClient = new(vW);
 
-            Console.WriteLine("******* VW **********");
-            Console.WriteLine(vWClient.GetClassicCarModel());
-            Console.WriteLine(vWClient.GetSuvCarModel());
 
             Console.ReadKey();
         }

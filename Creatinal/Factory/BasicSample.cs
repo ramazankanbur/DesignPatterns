@@ -20,9 +20,6 @@ namespace Creational.Factory
         {
             return $"db loglandı -> {log}";
         }
-    }
-
-
-
+    } 
 }
 
