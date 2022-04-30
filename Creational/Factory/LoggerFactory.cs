@@ -7,11 +7,15 @@ namespace Creational.Factory
         {
             if (type == "txt")
             {
+                //bu kısımda çeşitli algoritmalar çalıştırılabilir.
+                //ihtiyaca göre dependency'ler ya da parametreler oluşturulabilir.
                 return new TxtLogger();
             }
             else if (type == "db")
             {
-                return new DbLogger();
+                //bu kısımda çeşitli algoritmalar çalıştırılabilir.
+                //ihtiyaca göre dependency'ler ya da parametreler oluşturulabilir.
+                return new DbLogger("db Logger Specific");
             }
             else
             {

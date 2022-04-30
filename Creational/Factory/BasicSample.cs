@@ -16,9 +16,15 @@ namespace Creational.Factory
 
     class DbLogger : ILogger
     {
+        private readonly string _dbLoggerSpecificVal;
+        public DbLogger(string dbLoggerSpecific)
+        {
+            _dbLoggerSpecificVal = dbLoggerSpecific;
+        }
+
         public string Log(string log)
         {
-            return $"db loglandı -> {log}";
+            return $"db loglandı -> {log} + {_dbLoggerSpecificVal}";
         }
     } 
 }
