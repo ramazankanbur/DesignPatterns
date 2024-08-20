@@ -12,3 +12,10 @@
 - Bu pattern ile ihtiyaç duyulan class'lar, fabrika ile seçilebilir. Bu sayede ihtiyaç duyulan class ailesinin nasıl üretildiği client tarafından bilinmeden işlem yapılabilir.
 <br />
 ![alt text](https://github.com/ramazankanbur/DesignPatterns/blob/main/DesignPatterns/images/abstract_factory.jpeg)
+
+
+### Builder pattern
+
+- Bu pattern ile bir nesne turetirken constructure'da cok fazla parametre vermeye ihtiyac var ise bunun yonetimini daha kolay yapabiliiriz. Bu pattern ile cok daha okunakli anlasilabilir bir koda sahip oluruz.
+- Zincir metotlar opsiyonel ya da zorunlu olarak tasarlanabilir.
+<br />
