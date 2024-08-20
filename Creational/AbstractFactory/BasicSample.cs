@@ -89,12 +89,12 @@
 
     public class Db2Factory : IDatabaseFactory
     {
-        ICommand IDatabaseFactory.GetCommand()
+       public ICommand GetCommand()
         {
             return new DB2Command();
         }
 
-        IConnection IDatabaseFactory.GetConnection()
+       public IConnection GetConnection()
         {
             return new Db2Connection();
         }
@@ -102,12 +102,12 @@
 
     public class SqlFactory : IDatabaseFactory
     {
-        ICommand IDatabaseFactory.GetCommand()
+       public ICommand GetCommand()
         {
             return new SqlCommand();
         }
 
-        IConnection IDatabaseFactory.GetConnection()
+        public IConnection GetConnection()
         {
             return new SqlConnection();
         }
