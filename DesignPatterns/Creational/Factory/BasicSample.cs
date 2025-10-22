@@ -1,5 +1,4 @@
-﻿using System;
-namespace Creational.Factory
+﻿namespace DesignPatterns.Creational.Factory
 {
 	public interface ILogger
 	{
@@ -10,7 +9,7 @@ namespace Creational.Factory
     {
         public string Log(string log)
         {
-            return $"txt loglandı -> {log}";
+            return $"log added in txt file -> {log}";
         }
     }
 
@@ -24,7 +23,7 @@ namespace Creational.Factory
 
         public string Log(string log)
         {
-            return $"db loglandı -> {log} + {_dbLoggerSpecificVal}";
+            return $"log added in db -> {log} + {_dbLoggerSpecificVal}";
         }
     } 
 }

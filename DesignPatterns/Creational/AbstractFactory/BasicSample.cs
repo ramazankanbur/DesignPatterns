@@ -1,4 +1,4 @@
-﻿namespace Creational.AbstractFactory
+﻿namespace DesignPatterns.Creational.AbstractFactory
 {
 
     public interface IConnection

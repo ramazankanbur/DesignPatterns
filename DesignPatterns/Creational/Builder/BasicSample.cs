@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Creational.Builder
+namespace DesignPatterns.Creational.Builder
 {
-
     public class Order
     {
         public string CustomerName { get; }

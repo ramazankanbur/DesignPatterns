@@ -1,7 +1,7 @@
 ﻿using System;
-using Creational.AbstractFactory;
-using Creational.Builder;
-using Creational.Factory;
+using DesignPatterns.Creational.AbstractFactory;
+using DesignPatterns.Creational.Factory;
+using Order = DesignPatterns.Creational.Builder.Order;
 
 namespace DesignPatterns
 {
@@ -38,13 +38,13 @@ namespace DesignPatterns
             #endregion
 
             #region builder pattern
-            Order order = new Order.OrderBuilder("John Doe")
-                                 .SetAddress("123 Main Street, Cityville")
-                                 .AddItem("Laptop")
-                                 .AddItem("Mouse")
-                                 .SetPaymentMethod("Credit Card")
-                                 .Build();
-            Console.WriteLine(order.ToString());    
+            //Order order = new Order.OrderBuilder("John Doe")
+            //                     .SetAddress("123 Main Street, Cityville")
+            //                     .AddItem("Laptop")
+            //                     .AddItem("Mouse")
+            //                     .SetPaymentMethod("Credit Card")
+            //                     .Build();
+            //Console.WriteLine(order.ToString());    
             #endregion
 
             Console.ReadKey();

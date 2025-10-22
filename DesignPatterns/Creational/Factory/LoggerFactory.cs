@@ -1,20 +1,21 @@
 ﻿using System;
-namespace Creational.Factory
+
+namespace DesignPatterns.Creational.Factory
 {
     public class LoggerFactory
     {
-        public static ILogger GetInstance(string type)
+        public static DesignPatterns.Creational.Factory.ILogger GetInstance(string type)
         {
             if (type == "txt")
             {
-                //bu kısımda çeşitli algoritmalar çalıştırılabilir.
-                //ihtiyaca göre dependency'ler ya da parametreler oluşturulabilir.
+                // Necessary coding can be done in this section.
+
                 return new TxtLogger();
             }
             else if (type == "db")
             {
-                //bu kısımda çeşitli algoritmalar çalıştırılabilir.
-                //ihtiyaca göre dependency'ler ya da parametreler oluşturulabilir.
+                // Necessary coding can be done in this section.
+
                 return new DbLogger("db Logger Specific");
             }
             else

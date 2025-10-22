@@ -13,7 +13,4 @@
   <ItemGroup>
     <Folder Include="images\" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Creational\Creational.csproj" />
-  </ItemGroup>
 </Project>
