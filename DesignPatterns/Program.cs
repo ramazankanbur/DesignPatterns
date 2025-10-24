@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using DesignPatterns.Creational.AbstractFactory;
 using DesignPatterns.Creational.Factory;
+using DesignPatterns.Creational.Prototype_Clone;
 using Order = DesignPatterns.Creational.Builder.Order;
 
 namespace DesignPatterns
@@ -15,7 +17,6 @@ namespace DesignPatterns
             //var dbLogger = LoggerFactory.GetInstance("db");
             //Console.WriteLine(dbLogger.Log("hello!"));
             #endregion
-
 
             #region abstract factory pattern
             //var factorySql = new SqlFactory();
@@ -46,6 +47,50 @@ namespace DesignPatterns
             //                     .Build();
             //Console.WriteLine(order.ToString());    
             #endregion
+
+            #region prototype pattern
+            var vm = new VersionManager();
+
+            var doc = new Document
+            {
+                Title = "İlk Taslak",
+                Body = "Bu bir deneme metnidir.",
+                Tags = new List<string> { "taslak" }
+            };
+
+            vm.Save(doc);
+            Console.WriteLine("Saved v0:\n" + vm.Current);
+
+            doc.Body = "Birinci değişiklik yapıldı.";
+            doc.Tags.Add("guncelleme1");
+            vm.Save(doc);
+            Console.WriteLine("Saved v1:\n" + vm.Current);
+            
+            doc.Title = "Son Taslak";
+            doc.Body = "İkinci değişiklik - önemli notlar eklendi.";
+            doc.Tags.Add("important");
+            vm.Save(doc);
+            Console.WriteLine("Saved v2:\n" + vm.Current);
+
+            vm.PrintHistory();
+
+            var previous = vm.Undo();
+            Console.WriteLine("After Undo (back to v1):\n" + previous);
+
+            previous = vm.Undo();
+            Console.WriteLine("After Undo (back to v0):\n" + previous);
+
+            var next = vm.Redo();
+            Console.WriteLine("After Redo (forward to v1):\n" + next);
+
+            var currentDoc = vm.Current;
+            currentDoc.Body += "\nEklenen not: yeni değişiklik.";
+            vm.Save(currentDoc);
+            Console.WriteLine("Saved new version after editing v1 (this clears redo):\n" + vm.Current);
+
+            vm.PrintHistory();
+            #endregion
+
 
             Console.ReadKey();
         }

@@ -21,6 +21,11 @@
 ### Builder pattern
 
 - Bu pattern ile bir nesne turetirken constructure'da cok fazla parametre vermeye ihtiyac var ise bunun yonetimini daha kolay yapabiliiriz. Bu pattern ile cok daha okunakli anlasilabilir bir koda sahip oluruz.
+
 - Zincir metotlar opsiyonel ya da zorunlu olarak tasarlanabilir.
 
+### Prototype-Clone pattern
 
+- Prototype pattern, “hazır bir örneği klonla ve kullan” prensibiyle, nesne oluşturmayı hızlandırır, karmaşıklığı azaltır ve esneklik sağlar.
+
+- Kodun “nasıl oluşturulduğunu” bilmeden nesneleri çoğaltabiliriz.
