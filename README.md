@@ -29,3 +29,10 @@
 - Prototype pattern, “hazır bir örneği klonla ve kullan” prensibiyle, nesne oluşturmayı hızlandırır, karmaşıklığı azaltır ve esneklik sağlar.
 
 - Kodun “nasıl oluşturulduğunu” bilmeden nesneleri çoğaltabiliriz.
+
+### Singleton pattern
+
+- Bu pattern 2 problemi cozer. Ilki bir objenin sadece bir instance i oldugundan emin olmamizi saglar. Digeri, bu instance a global olarak erismemizi mumkun kilar.
+
+- Dikkatli kullanmak gerekir, aksi durumda bagimliliklari arttirabilir ve test yazilabilir bir code baseden uzaklasabiliriz.
+
